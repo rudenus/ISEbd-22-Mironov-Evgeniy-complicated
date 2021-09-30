@@ -12,7 +12,6 @@ namespace ShipForm
 {
 	public partial class FormShip : Form
 	{
-		//Graphics g;
 		Ship motorShip;
 		Direction direction;
 		public FormShip()
@@ -33,8 +32,8 @@ namespace ShipForm
 			Random rand = new Random();
 			motorShip = new Ship();
 			motorShip.classDop.Wheel = comboBoxNumber.SelectedIndex;
-			motorShip.SetPosition(rand.Next(150), rand.Next(150));
-			motorShip.Init(pictureBoxShip.Width, pictureBoxShip.Height, Color.LightGray, Color.LightBlue,Color.Gray, 6, 2);
+			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
+			motorShip.Init(Color.LightGray, Color.LightBlue,Color.Gray, 6, 2);
 			Draw();
 		}
         private void buttonRight_Click(object sender, EventArgs e)

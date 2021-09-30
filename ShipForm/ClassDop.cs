@@ -10,10 +10,9 @@ namespace ShipForm
     class ClassDop
     {
         private pipes dopEnum;
-        public int Wheel;
+        public int Wheel { set => dopEnum = (pipes)value; }
         public void drawDop(Graphics g, Point StartPosition, Color color)
         {
-            dopEnum = (pipes)Wheel;
             Brush brush = new SolidBrush(color);
             g.DrawRectangle(Pens.Black, StartPosition.X + 45, StartPosition.Y + 30, 10, 40);
             g.DrawRectangle(Pens.Black, StartPosition.X + 30, StartPosition.Y + 30, 10, 40);
