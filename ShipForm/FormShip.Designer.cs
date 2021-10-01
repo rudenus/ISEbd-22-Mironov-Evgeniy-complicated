@@ -36,12 +36,14 @@
             this.buttonRight = new System.Windows.Forms.Button();
             this.comboBoxNumber = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBoxType = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxShip)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(13, 13);
+            this.buttonCreate.Location = new System.Drawing.Point(534, 17);
             this.buttonCreate.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(100, 28);
@@ -114,7 +116,7 @@
             "2",
             "4",
             "6"});
-            this.comboBoxNumber.Location = new System.Drawing.Point(297, 16);
+            this.comboBoxNumber.Location = new System.Drawing.Point(466, 17);
             this.comboBoxNumber.Name = "comboBoxNumber";
             this.comboBoxNumber.Size = new System.Drawing.Size(49, 24);
             this.comboBoxNumber.TabIndex = 13;
@@ -123,17 +125,41 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.label1.Location = new System.Drawing.Point(150, 16);
+            this.label1.Location = new System.Drawing.Point(303, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 20);
             this.label1.TabIndex = 14;
             this.label1.Text = "number of pipes";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.label2.Location = new System.Drawing.Point(34, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 20);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "type of ship";
+            // 
+            // comboBoxType
+            // 
+            this.comboBoxType.FormattingEnabled = true;
+            this.comboBoxType.Items.AddRange(new object[] {
+            "Ship",
+            "Steamer",
+            "Premium Steamer"});
+            this.comboBoxType.Location = new System.Drawing.Point(151, 16);
+            this.comboBoxType.Name = "comboBoxType";
+            this.comboBoxType.Size = new System.Drawing.Size(146, 24);
+            this.comboBoxType.TabIndex = 16;
             // 
             // FormShip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.comboBoxType);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxNumber);
             this.Controls.Add(this.buttonRight);
@@ -160,6 +186,8 @@
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.ComboBox comboBoxNumber;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBoxType;
     }
 }
 
