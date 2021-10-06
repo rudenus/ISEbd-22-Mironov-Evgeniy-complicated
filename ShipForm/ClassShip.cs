@@ -9,8 +9,8 @@ namespace ShipForm
 {
 	class Ship:AbstractClass
 	{
-		private readonly int carWidth = 150;
-		private readonly int carHeight = 145;
+		private readonly int carWidth = 160;
+		private readonly int carHeight = 155;
 		public int MaxSpeed { private set; get; }
 		public float Weight { private set; get; }
 		public Color MainColor { private set; get; }

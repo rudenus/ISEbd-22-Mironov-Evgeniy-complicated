@@ -18,7 +18,9 @@ namespace ShipForm
 		{
 			InitializeComponent();
 			comboBoxNumber.DropDownStyle = ComboBoxStyle.DropDownList;
+			comboBoxType.DropDownStyle = ComboBoxStyle.DropDownList;
 			comboBoxNumber.SelectedIndex = 2;
+			comboBoxType.SelectedIndex = 0;
 		}
 		private void Draw()
 		{
@@ -30,7 +32,7 @@ namespace ShipForm
 		private void buttonCreate_Click(object sender, EventArgs e)
 		{
 			Random rand = new Random();
-			motorShip = new Steamer(comboBoxNumber.SelectedIndex,Color.LightBlue, true, true);
+			motorShip = new Steamer(comboBoxNumber.SelectedIndex,Color.LightBlue, true, true,comboBoxType.SelectedIndex,comboBoxNumber.SelectedIndex);
 
 			//motorShip.classDop.Wheel = comboBoxNumber.SelectedIndex;
 			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);

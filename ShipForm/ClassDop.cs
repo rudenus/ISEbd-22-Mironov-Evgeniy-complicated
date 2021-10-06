@@ -14,17 +14,29 @@ namespace ShipForm
         private pipes dopEnum;
         private bool cabin;
         private bool windows;
-        
+
         public Color DopColor { private set; get; }
         public int Wheel { set => dopEnum = (pipes)value; }
-        private IDop idop = new RectanglePipes(2);
-        public Steamer(int wheel,Color DopCol,bool cabin,bool window)
+        private IDop idop;
+        public Steamer(int wheel,Color DopCol,bool cabin,bool window,int shipState, int numPipes)
             :base(Color.LightGray, 6, 2)
         {
             this.cabin = cabin;
             this.windows = window;
             Wheel = wheel;
             DopColor = DopCol;
+            switch (shipState)
+            {
+                case 0:
+                        idop = new SimplePipes(numPipes);
+                        break;
+                case 1:
+                        idop = new RectanglePipes(numPipes);
+                        break;
+                case 2:
+                        idop = new CLassStripe(numPipes, Color.DarkRed);
+                        break;
+            }
         }
         public override void DrawTransport(Graphics g)
         {

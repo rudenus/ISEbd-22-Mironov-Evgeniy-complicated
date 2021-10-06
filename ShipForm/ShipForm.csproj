@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClass.cs" />
+    <Compile Include="CLassStripe.cs" />
     <Compile Include="ClassRectanglePipes.cs" />
     <Compile Include="ClassSimplePipes.cs" />
     <Compile Include="ClassDop.cs" />
