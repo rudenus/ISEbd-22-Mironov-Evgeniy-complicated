@@ -21,16 +21,17 @@ namespace ShipForm
 		public Color DopColor { private set; get; }
 		public Color DopColor2 { private set; get; }
 
-		public void SetPosition(int x,int y)
+		public void SetPosition(int x,int y, int wi, int he)
 		{
 			StartPosition.X = x;
 			StartPosition.Y = y;
+			pictureHeight = he;
+			pictureWidth = wi;
+
 		}
-		public void Init( int width,int height, Color mainColor, Color dopColor,Color dopColor2,int speed,int weight)
+		public void Init(Color mainColor, Color dopColor,Color dopColor2,int speed,int weight)
 		{
 			MaxSpeed = speed;
-			pictureHeight = height;
-			pictureWidth = width;
 			MainColor = mainColor;
 			DopColor = dopColor;
 			DopColor2 = dopColor2;
@@ -46,7 +47,6 @@ namespace ShipForm
 			g.DrawLine(pen, StartPosition.X+30, StartPosition.Y + 150, StartPosition.X + 120, StartPosition.Y + 150);
 			g.DrawLine(pen, StartPosition.X, StartPosition.Y + 100, StartPosition.X + 30, StartPosition.Y + 150);
 			g.DrawLine(pen, StartPosition.X+150, StartPosition.Y + 100, StartPosition.X + 120, StartPosition.Y + 150);
-
 			g.DrawRectangle(pen, StartPosition.X + 19, StartPosition.Y + 69, 122, 30);
 			g.FillRectangle(brush, StartPosition.X + 20, StartPosition.Y + 70, 120, 30);
 			g.DrawLine(pen, StartPosition.X + 20, StartPosition.Y + 105, StartPosition.X + 20, StartPosition.Y + 120);
