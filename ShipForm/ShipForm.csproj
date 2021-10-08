@@ -46,9 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassDop.cs" />
+    <Compile Include="AbstractClass.cs" />
+    <Compile Include="CLassStripePipes.cs" />
+    <Compile Include="ClassRectanglePipes.cs" />
+    <Compile Include="ClassSimplePipes.cs" />
+    <Compile Include="ClassShipChild.cs" />
     <Compile Include="EnumDop.cs" />
-    <Compile Include="ClassShip.cs" />
+    <Compile Include="ClassShipBasic.cs" />
     <Compile Include="EnumDirection.cs" />
     <Compile Include="FormShip.cs">
       <SubType>Form</SubType>
@@ -56,6 +60,8 @@
     <Compile Include="FormShip.Designer.cs">
       <DependentUpon>FormShip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interface.cs" />
+    <Compile Include="InterfaceDop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormShip.resx">
