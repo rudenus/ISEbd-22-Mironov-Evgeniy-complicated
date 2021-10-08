@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-    class CLassStripe : IDop
+    class CLassStripePipes : IDop
     {
         private pipes dopEnum;
         Color dopColor2;
         public int Wheel { set => dopEnum = (pipes)value; }
-        public CLassStripe(int x,Color dopColor2)
+        public CLassStripePipes(int x,Color dopColor2)
         {
             Wheel = x;
             this.dopColor2 = dopColor2;

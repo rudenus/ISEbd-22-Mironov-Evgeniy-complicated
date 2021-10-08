@@ -9,7 +9,7 @@ namespace ShipForm
 {
   
 
-    class Steamer:Ship
+    class ShipChild: ShipBasic
     {
         private pipes dopEnum;
         private bool cabin;
@@ -18,7 +18,7 @@ namespace ShipForm
         public Color DopColor { private set; get; }
         public int Wheel { set => dopEnum = (pipes)value; }
         private IDop idop;
-        public Steamer(int wheel,Color DopCol,bool cabin,bool window,int shipState, int numPipes)
+        public ShipChild(int wheel,Color DopCol,bool cabin,bool window,int shipState, int numPipes)
             :base(Color.LightGray, 6, 2)
         {
             this.cabin = cabin;
@@ -34,7 +34,7 @@ namespace ShipForm
                         idop = new RectanglePipes(numPipes);
                         break;
                 case 2:
-                        idop = new CLassStripe(numPipes, Color.DarkRed);
+                        idop = new CLassStripePipes(numPipes, Color.DarkRed);
                         break;
             }
         }

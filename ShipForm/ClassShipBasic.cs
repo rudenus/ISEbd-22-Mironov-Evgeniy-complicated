@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	class Ship:AbstractClass
+	class ShipBasic:AbstractClass
 	{
 		private readonly int carWidth = 160;
 		private readonly int carHeight = 155;
 		public int MaxSpeed { private set; get; }
 		public float Weight { private set; get; }
 		public Color MainColor { private set; get; }
-		public  Ship(Color mainColor,  int speed, int weight)
+		public ShipBasic(Color mainColor,  int speed, int weight)
         {
 			MaxSpeed = speed;
 			MainColor = mainColor;

@@ -47,12 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClass.cs" />
-    <Compile Include="CLassStripe.cs" />
+    <Compile Include="CLassStripePipes.cs" />
     <Compile Include="ClassRectanglePipes.cs" />
     <Compile Include="ClassSimplePipes.cs" />
-    <Compile Include="ClassDop.cs" />
+    <Compile Include="ClassShipChild.cs" />
     <Compile Include="EnumDop.cs" />
-    <Compile Include="ClassShip.cs" />
+    <Compile Include="ClassShipBasic.cs" />
     <Compile Include="EnumDirection.cs" />
     <Compile Include="FormShip.cs">
       <SubType>Form</SubType>

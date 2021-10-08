@@ -12,7 +12,7 @@ namespace ShipForm
 {
 	public partial class FormShip : Form
 	{
-		Ship motorShip;
+		ShipBasic motorShip;
 		Direction direction;
 		public FormShip()
 		{
@@ -32,7 +32,7 @@ namespace ShipForm
 		private void buttonCreate_Click(object sender, EventArgs e)
 		{
 			Random rand = new Random();
-			motorShip = new Steamer(comboBoxNumber.SelectedIndex,Color.LightBlue, true, true,comboBoxType.SelectedIndex,comboBoxNumber.SelectedIndex);
+			motorShip = new ShipChild(comboBoxNumber.SelectedIndex,Color.LightBlue, true, true,comboBoxType.SelectedIndex,comboBoxNumber.SelectedIndex);
 
 			//motorShip.classDop.Wheel = comboBoxNumber.SelectedIndex;
 			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
