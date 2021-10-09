@@ -57,7 +57,7 @@
             this.pictureBoxShip.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxShip.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxShip.Name = "pictureBoxShip";
-            this.pictureBoxShip.Size = new System.Drawing.Size(1067, 554);
+            this.pictureBoxShip.Size = new System.Drawing.Size(1253, 629);
             this.pictureBoxShip.TabIndex = 8;
             this.pictureBoxShip.TabStop = false;
             // 
@@ -66,7 +66,7 @@
             this.buttonLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLeft.BackgroundImage = global::ShipForm.Properties.Resources.left;
             this.buttonLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonLeft.Location = new System.Drawing.Point(812, 422);
+            this.buttonLeft.Location = new System.Drawing.Point(998, 497);
             this.buttonLeft.Name = "buttonLeft";
             this.buttonLeft.Size = new System.Drawing.Size(77, 79);
             this.buttonLeft.TabIndex = 9;
@@ -78,7 +78,7 @@
             this.buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonUp.BackgroundImage = global::ShipForm.Properties.Resources.up;
             this.buttonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonUp.Location = new System.Drawing.Point(895, 337);
+            this.buttonUp.Location = new System.Drawing.Point(1081, 412);
             this.buttonUp.Name = "buttonUp";
             this.buttonUp.Size = new System.Drawing.Size(77, 79);
             this.buttonUp.TabIndex = 10;
@@ -90,7 +90,7 @@
             this.buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDown.BackgroundImage = global::ShipForm.Properties.Resources.down;
             this.buttonDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonDown.Location = new System.Drawing.Point(895, 422);
+            this.buttonDown.Location = new System.Drawing.Point(1081, 497);
             this.buttonDown.Name = "buttonDown";
             this.buttonDown.Size = new System.Drawing.Size(77, 79);
             this.buttonDown.TabIndex = 11;
@@ -102,7 +102,7 @@
             this.buttonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonRight.BackgroundImage = global::ShipForm.Properties.Resources.right;
             this.buttonRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buttonRight.Location = new System.Drawing.Point(978, 422);
+            this.buttonRight.Location = new System.Drawing.Point(1164, 497);
             this.buttonRight.Name = "buttonRight";
             this.buttonRight.Size = new System.Drawing.Size(77, 79);
             this.buttonRight.TabIndex = 12;
@@ -157,7 +157,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1253, 629);
             this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

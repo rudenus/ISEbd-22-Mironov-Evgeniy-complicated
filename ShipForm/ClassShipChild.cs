@@ -18,12 +18,12 @@ namespace ShipForm
         public Color DopColor { private set; get; }
         public int Wheel { set => dopEnum = (pipes)value; }
         private IDop idop;
-        public ShipChild(int wheel,Color DopCol,bool cabin,bool window,int shipState, int numPipes)
-            :base(Color.LightGray, 6, 2)
+        public ShipChild(/*int wheel,*/Color MainColor, Color DopCol, bool cabin,bool window,int shipState, int numPipes)
+            :base(MainColor, 6, 2)
         {
             this.cabin = cabin;
             this.windows = window;
-            Wheel = wheel;
+            Wheel = numPipes;
             DopColor = DopCol;
             switch (shipState)
             {
