@@ -11,7 +11,8 @@ namespace ShipForm
         where T : class, ITransport
         where W : IDop
     {
-        private readonly T[] _places;
+        private readonly List<T> _places;
+        private readonly int maxCount;
         private readonly int pictureWidth;
         private readonly int pictureHeight;
         private readonly int _placeSizeWidth = 210;
@@ -21,90 +22,51 @@ namespace ShipForm
         {
             int width = picWidth / _placeSizeWidth;
             int height = picHeight / _placeSizeHeight;
-            _places = new T[width * height];
+            maxCount = width * height;
+            _places = new List<T>();
             pictureWidth = picWidth;
             pictureHeight = picHeight;
         }
         public static bool operator +(Parking<T,W> p, T ship)
         {
-            int changeHeight = 10;
-            int width = p.pictureWidth / p._placeSizeWidth;
-
-            for (int i = 0; i < p._places.Length; i++)
+            if (p._places.Count >= p.maxCount)
             {
-                if (p.CheckFreePlace(i))
-                {
-                    p._places[i] = ship;
-                    p._places[i].SetPosition(i % width * p._placeSizeWidth + changeHeight,
-                    i / width * p._placeSizeHeight + changeHeight, p.pictureWidth,
-                    p.pictureHeight);
-                    return true;
-                }
+                return false;
             }
-            return false;
+            p._places.Add(ship);
+            return true;
         }
         public static T operator -(Parking<T,W> p, int index)
         {
-            if (index < 0 || index > p._places.Length)
+            if (index < -1 || index >= p._places.Count)
             {
                 return null;
             }
-            if (!p.CheckFreePlace(index))
-            {
-                T vehicle = p._places[index];
-                p._places[index] = null;
-                return vehicle;
-            }
-            return null;
+            T temp = p._places[index];
+            p._places.RemoveAt(index);
+            return temp;
         }
         public static bool operator >(Parking<T, W> p, Parking<T, W> p2)
         {
-            int x = -1;
-            int y = -1;
-
-            for (int i = 0; i < p._places.Length; i++)
-            {
-                if (p.CheckFreePlace(i) && x!=-1)
-                {
-                    x = i;
-                }
-                if (p2.CheckFreePlace(i) && y != -1)
-                {
-                    y = i;
-                }
-            }
-            if (x > y) return true;
+            if (p._places.Count > p2._places.Count) return true;
             return false;
         }
         public static bool operator <(Parking<T, W> p, Parking<T, W> p2)
         {
-            int x = -1;
-            int y = -1;
-
-            for (int i = 0; i < p._places.Length; i++)
-            {
-                if (p.CheckFreePlace(i) && x != -1)
-                {
-                    x = i;
-                }
-                if (p2.CheckFreePlace(i) && y != -1)
-                {
-                    y = i;
-                }
-            }
-            if (y > x) return true;
+            if (p2._places.Count > p._places.Count) return true;
             return false;
-        }
-        private bool CheckFreePlace(int indexPlace)
-        {
-            return _places[indexPlace] == null;
         }
         public void Draw(Graphics g)
         {
+            int changeHeight = 10;
+            int width = pictureWidth / _placeSizeWidth;
             DrawMarking(g);
-            for (int i = 0; i < _places.Length; i++)
+            for (int i = 0; i < _places.Count; i++)
             {
-                _places[i]?.DrawTransport(g);
+                _places[i].SetPosition(i % width * _placeSizeWidth + changeHeight,
+                    i / width * _placeSizeHeight + changeHeight, pictureWidth,
+                    pictureHeight);
+                _places[i].DrawTransport(g);
             }
         }
         private void DrawMarking(Graphics g)
@@ -114,9 +76,23 @@ namespace ShipForm
             {
                 for (int j = 0; j < pictureHeight / _placeSizeHeight + 1; ++j)
                 {//линия рамзетки места            
-                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight, i * _placeSizeWidth + _placeSizeWidth / 2, j * _placeSizeHeight);
+                    g.DrawLine(pen, i * _placeSizeWidth, j * _placeSizeHeight + 3, i * _placeSizeWidth + _placeSizeWidth / 2, j * _placeSizeHeight + 3);
                 }
                 g.DrawLine(pen, i * _placeSizeWidth, 0, i * _placeSizeWidth, (pictureHeight / _placeSizeHeight) * _placeSizeHeight);
+            }
+        }
+        public T this[int ind]
+        {
+            get
+            {
+                if(ind>-1 && ind<_places.Count)
+                return _places[ind];
+                return null;
+            }
+            set
+            {
+                if (ind > -1 && ind < _places.Count)
+                    _places[ind] = value;
             }
         }
     }

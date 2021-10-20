@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-    abstract class AbstractClass:ITransport
+    abstract class Vessel:ITransport
     {
         protected Point StartPosition;
         protected int pictureWidth;

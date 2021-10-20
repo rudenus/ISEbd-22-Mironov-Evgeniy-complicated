@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClass.cs" />
+    <Compile Include="ClassParkingCollection.cs" />
     <Compile Include="ClassParking.cs" />
     <Compile Include="CLassStripePipes.cs" />
     <Compile Include="ClassRectanglePipes.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="InterfaceDop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormParking.resx">
+      <DependentUpon>FormParking.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormShip.resx">
       <DependentUpon>FormShip.cs</DependentUpon>
     </EmbeddedResource>

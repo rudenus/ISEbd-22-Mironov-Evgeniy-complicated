@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	class ShipBasic:AbstractClass
+	class ShipBasic: Vessel
 	{
 		private readonly int carWidth = 170;
 		private readonly int carHeight = 195;
