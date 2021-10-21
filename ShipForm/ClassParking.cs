@@ -59,41 +59,40 @@ namespace ShipForm
         }
         public static bool operator >(Parking<T, W> p, Parking<T, W> p2)
         {
-            int x = -1;
-            int y = -1;
+            int x = 0;
+            int y = 0;
 
             for (int i = 0; i < p._places.Length; i++)
             {
-                if (p.CheckFreePlace(i) && x!=-1)
+                if (p.CheckFreePlace(i) )
                 {
-                    x = i;
+                    x += 1;
                 }
-                if (p2.CheckFreePlace(i) && y != -1)
+                if (p2.CheckFreePlace(i))
                 {
-                    y = i;
+                    y += 1;
                 }
             }
-            if (x > y) return true;
-            return false;
+            return x>y;
         }
         public static bool operator <(Parking<T, W> p, Parking<T, W> p2)
         {
-            int x = -1;
-            int y = -1;
+            int x = 0;
+            int y = 0;
 
             for (int i = 0; i < p._places.Length; i++)
             {
-                if (p.CheckFreePlace(i) && x != -1)
+                if (p.CheckFreePlace(i))
                 {
-                    x = i;
+                    x += 1;
                 }
-                if (p2.CheckFreePlace(i) && y != -1)
+                if (p2.CheckFreePlace(i))
                 {
-                    y = i;
+                    y += 1;
                 }
             }
-            if (y > x) return true;
-            return false;
+            return y>x;
+
         }
         private bool CheckFreePlace(int indexPlace)
         {
