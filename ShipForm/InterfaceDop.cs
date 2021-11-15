@@ -11,6 +11,5 @@ namespace ShipForm
     {
         int Wheel { set; }
         void DrawDop(Graphics g, Point StartPosition, Color color);
-
     }
 }

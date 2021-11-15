@@ -54,45 +54,21 @@ namespace ShipForm
 
         private void ParkingShipButton_Click(object sender, EventArgs e)
         {
-            ColorDialog dialog = new ColorDialog(); if (dialog.ShowDialog() == DialogResult.OK)
+            var formCarConfig = new FormConfig();
+            formCarConfig.AddEvent(AddShip);
+            formCarConfig.Show();
+        }
+        private void AddShip(Vessel car)
+        {
+            if (car != null && listBoxParkings.SelectedIndex > -1)
             {
-                var ship = new ShipBasic(dialog.Color,10, 2 );
-                if (parkingCol[listBoxParkings.SelectedItem.ToString()] + ship)
+                if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + (car as ShipBasic))
                 {
                     Draw();
                 }
-
                 else
                 {
-                    MessageBox.Show("Парковка переполнена");
-                }
-            }
-        }
-
-        private void ParkingSteamerButton_Click(object sender, EventArgs e)
-        {
-            if (listBoxParkings.SelectedIndex > -1)
-            {
-                if (listBoxParkings.SelectedIndex > -1)
-                {
-                    ColorDialog dialog = new ColorDialog();
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        ColorDialog dialogDop = new ColorDialog();
-                        if (dialogDop.ShowDialog() == DialogResult.OK)
-                        {
-                            var ship = new ShipChild(dialog.Color, dialogDop.Color, true, true,2,2);
-                            if (parkingCol[listBoxParkings.SelectedItem.ToString()] + ship)
-                            {
-                                Draw();
-                            }
-
-                            else
-                            {
-                                MessageBox.Show("Парковка переполнена");
-                            }
-                        }
-                    }
+                    MessageBox.Show("Машину не удалось поставить");
                 }
             }
         }

@@ -12,7 +12,7 @@ namespace ShipForm
         private pipes dopEnum;
         Color dopColor2;
         public int Wheel { set => dopEnum = (pipes)value; }
-        public CLassStripePipes(int x,Color dopColor2)
+        public CLassStripePipes(int x)
         {
             Wheel = x;
             this.dopColor2 = dopColor2;
@@ -23,7 +23,7 @@ namespace ShipForm
             Brush brush = new SolidBrush(color);
             Brush brushDop = new SolidBrush(Color.DarkGray);
             Pen pen = new Pen(Color.Black);
-            Brush brushDop2 = new SolidBrush(dopColor2);
+            Brush brushDop2 = Brushes.Red;
             g.DrawRectangle(pen, StartPosition.X + 45, StartPosition.Y + 40, 10, 30);
             g.DrawRectangle(pen, StartPosition.X + 30, StartPosition.Y + 40, 10, 30);
             g.FillRectangle(brush, StartPosition.X + 45, StartPosition.Y + 40, 10, 30);

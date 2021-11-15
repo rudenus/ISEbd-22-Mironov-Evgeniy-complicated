@@ -18,8 +18,8 @@ namespace ShipForm
         public Color DopColor { private set; get; }
         public int Wheel { set => dopEnum = (pipes)value; }
         private IDop idop;
-        public ShipChild(/*int wheel,*/Color MainColor, Color DopCol, bool cabin,bool window,int shipState, int numPipes)
-            :base(MainColor, 6, 2)
+        public ShipChild(Color MainColor, Color DopCol, bool cabin,bool window,int speed, int weight, int shipState, int numPipes)
+            :base(MainColor, speed, weight)
         {
             this.cabin = cabin;
             this.windows = window;
@@ -34,7 +34,7 @@ namespace ShipForm
                         idop = new RectanglePipes(numPipes);
                         break;
                 case 2:
-                        idop = new CLassStripePipes(numPipes, Color.DarkRed);
+                        idop = new CLassStripePipes(numPipes);
                         break;
             }
         }
@@ -64,7 +64,15 @@ namespace ShipForm
                 g.DrawLine(pen, StartPosition.X + 10, StartPosition.Y + 88, StartPosition.X + 10, StartPosition.Y + 96);
                 g.DrawLine(pen, StartPosition.X + 7, StartPosition.Y + 92, StartPosition.X + 13, StartPosition.Y + 92);
             }
-            idop.DrawDop(g, StartPosition, Color.LightGray);
+            idop.DrawDop(g, StartPosition, DopColor);
+        }
+        public void SetIDop(IDop idop)
+        {
+            this.idop = idop;
+        }
+        public void SetDopColor(Color color)
+        {
+            DopColor = color;
         }
     }
 }
