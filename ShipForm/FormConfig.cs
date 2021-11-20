@@ -68,12 +68,9 @@ DragDropEffects.Copy);
                         (int)numericUpDownSpeed.Value, (int)numericUpDownWeight.Value,2,2);
                     break;
             }
-            else
+            else if (ship is ShipChild && e.Data.GetDataPresent(typeof(ShipChild))
             {
-                if (ship is ShipChild)
-                {
-                    (ship as ShipChild).SetIDop((IDop)e.Data.GetData(e.Data.GetFormats()[0]));
-                }
+                (ship as ShipChild).SetIDop((IDop)e.Data.GetData(e.Data.GetFormats()[0]));
             }
             DrawShip();
         }
