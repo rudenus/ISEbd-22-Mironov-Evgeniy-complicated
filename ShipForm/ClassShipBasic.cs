@@ -7,17 +7,28 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	class ShipBasic: Vessel
+	public class ShipBasic: Vessel
 	{
 		private readonly int carWidth = 170;
 		private readonly int carHeight = 195;
+		protected readonly char separator = ';';
 		public ShipBasic(Color mainColor,  int speed, int weight)
         {
 			MaxSpeed = speed;
 			MainColor = mainColor;
 			Weight = weight;
 		}
-        public override void DrawTransport(Graphics g)
+		public ShipBasic(string info)
+		{
+			string[] strs = info.Split(separator);
+			if (strs.Length == 3)
+			{
+				MaxSpeed = Convert.ToInt32(strs[0]);
+				Weight = Convert.ToInt32(strs[1]);
+				MainColor = Color.FromArgb(Convert.ToInt32(strs[2]));
+			}
+		}
+		public override void DrawTransport(Graphics g)
         {
 			Pen pen = Pens.Black;
 			Brush brush = new SolidBrush(MainColor);
@@ -73,5 +84,9 @@ namespace ShipForm
 					break;
 			}
 		}
-    }
+		public override string ToString()
+		{
+			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.ToArgb()}";
+		}
+	}
 }

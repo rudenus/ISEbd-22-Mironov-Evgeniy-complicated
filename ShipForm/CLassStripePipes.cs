@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-    class CLassStripePipes : IDop
+    class ClassStripePipes : IDop
     {
         private pipes dopEnum;
-        Color dopColor2;
         public int Wheel { set => dopEnum = (pipes)value; }
-        public CLassStripePipes(int x)
+        public ClassStripePipes(int x)
         {
             Wheel = x;
-            this.dopColor2 = dopColor2;
         }
 
         public void DrawDop(Graphics g, Point StartPosition, Color color)

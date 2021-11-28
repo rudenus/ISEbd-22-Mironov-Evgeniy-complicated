@@ -34,10 +34,36 @@ namespace ShipForm
                         idop = new RectanglePipes(numPipes);
                         break;
                 case 2:
-                        idop = new CLassStripePipes(numPipes);
+                        idop = new ClassStripePipes(numPipes);
                         break;
             }
         }
+        public ShipChild(string info) : base(info)
+        {
+            string[] strs = info.Split(separator);
+            if (strs.Length == 7)
+            {
+                MaxSpeed = Convert.ToInt32(strs[0]);
+                Weight = Convert.ToInt32(strs[1]);
+                MainColor = Color.FromArgb(Convert.ToInt32(strs[2]));
+                DopColor = Color.FromArgb(Convert.ToInt32(strs[3]));
+                cabin = Convert.ToBoolean(strs[4]);
+                windows = Convert.ToBoolean(strs[5]);
+                if(strs[6] == "RectanglePipes")
+                {
+                    idop = new RectanglePipes(2);
+                }
+                else if(strs[6] == "SimplePipes")
+                {
+                    idop = new SimplePipes(2);
+                }
+                else if(strs[6]== "ClassStripePipes")
+                {
+                    idop = new ClassStripePipes(2);
+                }
+            }
+        }
+
         public override void DrawTransport(Graphics g)
         {
             base.DrawTransport(g);
@@ -73,6 +99,11 @@ namespace ShipForm
         public void SetDopColor(Color color)
         {
             DopColor = color;
+        }
+        public override string ToString()
+        {
+            return
+           $"{base.ToString()}{separator}{DopColor.ToArgb()}{separator}{cabin}{separator}{windows}{separator}{idop.GetType().Name}";
         }
     }
 }
