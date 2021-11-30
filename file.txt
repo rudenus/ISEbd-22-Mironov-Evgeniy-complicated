@@ -1,0 +1,55 @@
+2021-11-29 21:00:48.6851|INFO|ShipForm.FormParking|Добавили парковку ЫФЫА
+2021-11-29 21:00:48.8142|INFO|ShipForm.FormParking|Перешли на парковкуЫФЫА
+2021-11-29 21:00:53.9989|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-65536
+2021-11-29 21:01:05.8373|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-65536;-16777024;False;True
+2021-11-29 21:01:13.5708|INFO|ShipForm.FormParking|Добавили парковку выа
+2021-11-29 21:01:13.5708|INFO|ShipForm.FormParking|Перешли на парковкуЫФЫА
+2021-11-29 21:01:14.4024|INFO|ShipForm.FormParking|Перешли на парковкуЫФЫА
+2021-11-29 21:01:14.8017|INFO|ShipForm.FormParking|Перешли на парковкуЫФЫА
+2021-11-29 21:01:15.1700|INFO|ShipForm.FormParking|Перешли на парковкувыа
+2021-11-29 21:01:15.7144|INFO|ShipForm.FormParking|Перешли на парковкуЫФЫА
+2021-11-29 21:01:16.1387|INFO|ShipForm.FormParking|Перешли на парковкувыа
+2021-11-29 21:01:22.6213|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-256
+2021-11-29 21:01:27.5618|INFO|ShipForm.FormParking|Перешли на парковкуЫФЫА
+2021-11-29 21:01:31.2614|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-1
+2021-11-29 21:01:33.9744|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-1
+2021-11-29 21:01:37.3808|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-1
+2021-11-29 21:01:40.9493|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-1
+2021-11-29 21:01:43.4771|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-1
+2021-11-29 21:01:46.9806|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-1;-16777216;False;False
+2021-11-29 21:01:49.9487|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-1
+2021-11-29 21:02:05.8981|INFO|ShipForm.FormParking|Перешли на парковкувыа
+2021-11-29 21:02:21.0048|INFO|ShipForm.FormParking|Изъят автомобиль 100;100;-256 с 0
+2021-11-29 21:26:29.2867|INFO|ShipForm.FormParking|Добавили парковку авыа
+2021-11-29 21:26:29.3287|INFO|ShipForm.FormParking|Перешли на парковкуавыа
+2021-11-29 21:26:32.7972|INFO|ShipForm.FormParking|Добавили парковку авыа
+2021-11-29 21:26:32.7972|INFO|ShipForm.FormParking|Перешли на парковкуавыа
+2021-11-29 21:26:34.7086|INFO|ShipForm.FormParking|Добавили парковку вы
+2021-11-29 21:26:34.7086|INFO|ShipForm.FormParking|Перешли на парковкуавыа
+2021-11-29 21:26:36.1156|INFO|ShipForm.FormParking|Перешли на парковкувы
+2021-11-29 21:26:36.4758|INFO|ShipForm.FormParking|Перешли на парковкувы
+2021-11-29 21:26:36.8921|INFO|ShipForm.FormParking|Перешли на парковкуавыа
+2021-11-29 21:28:12.2230|WARN|ShipForm.FormParking|Было введено пустое название парковки
+2021-11-29 21:28:21.9169|INFO|ShipForm.FormParking|Добавили парковку asdf
+2021-11-29 21:28:21.9169|INFO|ShipForm.FormParking|Перешли на парковкуasdf
+2021-11-29 21:28:21.9269|WARN|ShipForm.FormParking|В листбоксе был выбран элемент не входящий в диапозон
+2021-11-29 21:28:24.8450|WARN|ShipForm.FormParking|Было введено пустое название парковки
+2021-11-29 21:28:28.5326|INFO|ShipForm.FormParking|Добавили парковку sdfd
+2021-11-29 21:28:28.5326|INFO|ShipForm.FormParking|Перешли на парковкуasdf
+2021-11-29 21:28:29.2921|INFO|ShipForm.FormParking|Перешли на парковкуsdfd
+2021-11-29 21:28:29.7324|INFO|ShipForm.FormParking|Перешли на парковкуasdf
+2021-11-29 21:28:30.1407|INFO|ShipForm.FormParking|Перешли на парковкуsdfd
+2021-11-29 21:28:30.4279|INFO|ShipForm.FormParking|Перешли на парковкуsdfd
+2021-11-29 21:28:30.8442|INFO|ShipForm.FormParking|Перешли на парковкуasdf
+2021-11-30 18:39:52.3211|INFO|ShipForm.FormParking|Сохранено в файл C:\Users\Женя\Desktop\шарага\2 курс\ТП\4 ус\Новый текстовый документ.txt
+2021-11-30 18:39:59.6553|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-65536
+2021-11-30 18:40:08.9905|INFO|ShipForm.FormParking|Загружено из файла C:\Users\Женя\Desktop\шарага\2 курс\ТП\4 ус\Новый текстовый документ.txt
+2021-11-30 18:40:19.6776|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-65536;-256;True;False;ClassStripePipes
+2021-11-30 18:40:24.6534|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-256
+2021-11-30 18:40:30.3576|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-4144960
+2021-11-30 18:40:39.1252|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-32768;-16744448;False;True;ClassStripePipes
+2021-11-30 18:40:43.9924|INFO|ShipForm.FormParking|Изъят автомобиль 100;100;-4144960 с 0
+2021-11-30 18:41:07.3021|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-32768
+2021-11-30 18:41:13.9122|INFO|ShipForm.FormParking|Сохранили парковку в файл C:\Users\Женя\Desktop\шарага\2 курс\ТП\4 ус\Новый текстовый документ.txt
+2021-11-30 18:41:25.1983|INFO|ShipForm.FormParking|Добавлен автомобиль 100;100;-4144960;-16777216;False;False;ClassStripePipes
+2021-11-30 18:41:29.8880|INFO|ShipForm.FormParking|Загрузили парковку из файла C:\Users\Женя\Desktop\шарага\2 курс\ТП\4 ус\Новый текстовый документ.txt

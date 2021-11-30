@@ -9,14 +9,14 @@ namespace ShipForm
 {
     class ParkingCollection
     {
-        readonly Dictionary<string, Parking<ShipBasic, SimplePipes>> parkingStages;
+        readonly Dictionary<string, Parking<Vessel, SimplePipes>> parkingStages;
         public List<string> Keys => parkingStages.Keys.ToList();
         private readonly char separator = ':';
         private readonly int pictureWidth;
         private readonly int pictureHeight;
         public ParkingCollection(int pictureWidth, int pictureHeight)
         {
-            parkingStages = new Dictionary<string, Parking<ShipBasic, SimplePipes>>();
+            parkingStages = new Dictionary<string, Parking<Vessel, SimplePipes>>();
             this.pictureWidth = pictureWidth;
             this.pictureHeight = pictureHeight;
         }
@@ -24,7 +24,7 @@ namespace ShipForm
         {
             if (!parkingStages.ContainsKey(name))
             {
-                parkingStages.Add(name, new Parking<ShipBasic, SimplePipes>(pictureWidth, pictureHeight));
+                parkingStages.Add(name, new Parking<Vessel, SimplePipes>(pictureWidth, pictureHeight));
             }
         }
         public void DelParking(string name)
@@ -34,21 +34,21 @@ namespace ShipForm
                 parkingStages.Remove(name);
             }
         }
-        public Parking<ShipBasic, SimplePipes> this[string ind]
+        public Parking<Vessel, SimplePipes> this[string ind]
         {
             get
             {
                 return parkingStages[ind];
             }
         }
-        public ShipBasic this[string ind,int ind2]
+        public Vessel this[string ind,int ind2]
         {
             get
             {
                 return parkingStages[ind][ind2];
             }
         }
-        public bool SaveDataAll(string filename)
+        public void SaveDataAll(string filename)
         {
             if (File.Exists(filename))
             {
@@ -68,13 +68,13 @@ namespace ShipForm
                         {
                             //если место не пустое
                             //Записываем тип машины
-                            if (ship.GetType().Name == "ShipBasic")
+                            if (ship.GetType().Name == "Ship")
                             {
-                                fs.Write($"ShipBasic{separator}");
+                                fs.Write($"Ship{separator}");
                             }
-                            if (ship.GetType().Name == "ShipChild")
+                            if (ship.GetType().Name == "ClassSteamer")
                             {
-                                fs.Write($"ShipChild{separator}");
+                                fs.Write($"ClassSteamer{separator}");
                             }
                             //Записываемые параметры
                             fs.Write(ship + Environment.NewLine);
@@ -82,9 +82,8 @@ namespace ShipForm
                     }
                 }
             }
-            return true;
         }
-        public bool SaveData(string filename, string parkingName)
+        public void SaveData(string filename, string parkingName)
         {
             if (File.Exists(filename))
             {
@@ -115,13 +114,12 @@ namespace ShipForm
                         }
                     }
             }
-            return true;
         }
-        public bool LoadDataAll(string filename)
+        public void LoadDataAll(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             string bufferTextFromFile = "";
             using (StreamReader fs = new StreamReader(filename))
@@ -137,7 +135,7 @@ namespace ShipForm
                 else
                 {
                     //если нет такой записи, то это не те данные
-                    return false;
+                    throw new FileLoadException("Неверный формат файла");
                 }
                 ShipBasic car = null;
                 string key = string.Empty;
@@ -150,37 +148,36 @@ namespace ShipForm
                     {
                         //начинаем новую парковку
                         key = bufferTextFromFile.Split(separator)[1];
-                        parkingStages.Add(key, new Parking<ShipBasic, SimplePipes>(pictureWidth, pictureHeight));
+                        parkingStages.Add(key, new Parking<Vessel,SimplePipes>(pictureWidth, pictureHeight));
                         continue;
                     }
                     if (string.IsNullOrEmpty(bufferTextFromFile))
                     {
                         continue;
                     }
-                    if (bufferTextFromFile.Split(separator)[0] == "ShipBasic")
+                    if (bufferTextFromFile.Split(separator)[0] == "Ship")
                     {
                         car = new ShipBasic(bufferTextFromFile.Split(separator)[1]);
                     }
-                    else if (bufferTextFromFile.Split(separator)[0] == "ShipChild")
+                    else if (bufferTextFromFile.Split(separator)[0] == "ClassSteamer")
                     {
                         car = new ShipChild(bufferTextFromFile.Split(separator)[1]);
                     }
                     var result = parkingStages[key] + car;
                     if (!result)
                     {
-                        return false;
+                        throw new FileLoadException("Не удалось загрузить автомобиль на парковку");
                     }
                 }
 
             }
-            return true;
         }
 
-        public bool LoadData(string filename)
+    public void LoadData(string filename)
         {
             if (!File.Exists(filename))
             {
-                return false;
+                throw new FileNotFoundException();
             }
             string bufferTextFromFile = "";
             using (StreamReader fs = new StreamReader(filename))
@@ -190,7 +187,7 @@ namespace ShipForm
 
                 if (!bufferTextFromFile.Contains("ParkingOnly"))
                 {
-                    return false;
+                    throw new FileLoadException("Неверный формат файла");
                 }
                 ShipBasic car = null;
                 string key = string.Empty;
@@ -205,7 +202,7 @@ namespace ShipForm
                         key = bufferTextFromFile.Split(separator)[1];
                         if (!parkingStages.ContainsKey(key))
                         {
-                            parkingStages.Add(key, new Parking<ShipBasic, SimplePipes>(pictureWidth, pictureHeight));
+                            parkingStages.Add(key, new Parking<Vessel, SimplePipes>(pictureWidth, pictureHeight));
                         }
                         else
                         {
@@ -228,12 +225,11 @@ namespace ShipForm
                     var result = parkingStages[key] + car;
                     if (!result)
                     {
-                        return false;
+                        throw new FileLoadException("Не удалось загрузить автомобиль на парковку");
                     }
                 }
 
             }
-            return true;
         }
 
     }

@@ -1,3 +1,4 @@
 ParkingOnly
-Parking:dgd
-ShipChild:100;100;-4144960;-16777024;False;False;ClassStripePipes
+Parking:ав
+ShipChild:100;100;-32768;-16744448;False;True;ClassStripePipes
+ShipBasic:100;100;-32768

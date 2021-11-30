@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,12 +14,14 @@ namespace ShipForm
     public partial class FormParking : Form
     {
         private readonly ParkingCollection parkingCol;
-        private Stack<ShipBasic> stack;
+        private Stack<Vessel> stack;
+        private readonly Logger logger;
         public FormParking()
         {
             InitializeComponent();
+            logger = LogManager.GetCurrentClassLogger();
             parkingCol = new ParkingCollection(pictureBoxParking.Width, pictureBoxParking.Height);
-            stack = new Stack<ShipBasic>();
+            stack = new Stack<Vessel>();
             Draw();
         }
         private void ReloadLevels()
@@ -58,17 +61,33 @@ namespace ShipForm
             formCarConfig.AddEvent(AddShip);
             formCarConfig.Show();
         }
-        private void AddShip(Vessel car)
+        private void AddShip(Vessel ship)
         {
-            if (car != null && listBoxParkings.SelectedIndex > -1)
+            if (ship != null && listBoxParkings.SelectedIndex > -1)
             {
-                if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + (car as ShipBasic))
+                try
                 {
+                    if ((parkingCol[listBoxParkings.SelectedItem.ToString()]) + ship)
+                    {
+                        Draw();
+                        logger.Info($"Добавлен автомобиль {ship}");
+                    }
+                    else
+                    {
+                        logger.Warn("Машину не удалось поставить");
+                        MessageBox.Show("Машину не удалось поставить");
+                    }
                     Draw();
                 }
-                else
+                catch (ParkingOverflowException ex)
                 {
-                    MessageBox.Show("Машину не удалось поставить");
+                    MessageBox.Show(ex.Message, "Переполнение", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -77,11 +96,32 @@ namespace ShipForm
         {
             if (listBoxParkings.SelectedIndex > -1 && maskedTextBox.Text != "")
             {
-                var ship = parkingCol[listBoxParkings.SelectedItem.ToString()] -
-                    Convert.ToInt32(maskedTextBox.Text);
-                stack.Push(ship);
+                try
+                {
+                    var ship = parkingCol[listBoxParkings.SelectedItem.ToString()] -
+                  Convert.ToInt32(maskedTextBox.Text);
+                    Random rand = new Random();
+
+                    if (ship != null)
+                    {
+                        FormShip form = new FormShip();
+                        stack.Push(ship);
+                        logger.Info($"Изъят автомобиль {ship} с { maskedTextBox.Text}");
+
+                        Draw();
+                    }
+                }
+                catch (ParkingNotFoundException ex)
+                {
+                    MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
+                   MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            Draw();
         }
 
         private void AddParkingButton_Click(object sender, EventArgs e)
@@ -119,6 +159,7 @@ namespace ShipForm
 
         private void putInStackButton_Click(object sender, EventArgs e)
         {
+
             if (stack.Count>0)
             {
                 var ship = stack.Pop();
@@ -138,34 +179,44 @@ namespace ShipForm
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (parkingCol.SaveDataAll(saveFileDialog.FileName))
+                try
                 {
+                    parkingCol.SaveDataAll(saveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранено в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (parkingCol.LoadDataAll(openFileDialog.FileName))
+                try
                 {
+                    parkingCol.LoadDataAll(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
+                    MessageBoxIcon.Information);
+                    logger.Info("Загружено из файла " + openFileDialog.FileName);
                     ReloadLevels();
                     Draw();
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -174,17 +225,24 @@ namespace ShipForm
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (parkingCol.LoadData(openFileDialog.FileName))
+                try
                 {
+                    parkingCol.LoadData(openFileDialog.FileName);
                     MessageBox.Show("Загрузили", "Результат", MessageBoxButtons.OK,
-                   MessageBoxIcon.Information);
+                    MessageBoxIcon.Information);
+                    logger.Info("Загрузили парковку из файла " + openFileDialog.FileName);
                     ReloadLevels();
                     Draw();
                 }
-                else
+                catch (ParkingOccupiedPlaceException ex)
                 {
-                    MessageBox.Show("Не загрузили", "Результат", MessageBoxButtons.OK,
+                    MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке",
+                   MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -193,14 +251,16 @@ namespace ShipForm
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (parkingCol.SaveData(saveFileDialog.FileName, listBoxParkings.SelectedItem.ToString()))
+                try
                 {
+                    parkingCol.SaveData(saveFileDialog.FileName, listBoxParkings.SelectedItem.ToString());
                     MessageBox.Show("Сохранение прошло успешно", "Результат",
-                   MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Info("Сохранили парковку в файл " + saveFileDialog.FileName);
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Не сохранилось", "Результат",
+                    MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
