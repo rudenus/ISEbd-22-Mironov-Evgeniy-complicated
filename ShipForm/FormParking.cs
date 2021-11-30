@@ -128,10 +128,12 @@ namespace ShipForm
         {
             if (string.IsNullOrEmpty(textBoxNewParking.Text))
             {
+                logger.Warn("Было введено пустое название парковки");
                 MessageBox.Show("Введите название парковки", "Ошибка",
                MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            logger.Info($"Добавили парковку {textBoxNewParking.Text}");
             parkingCol.AddParking(textBoxNewParking.Text);
             ReloadLevels();
 
@@ -144,6 +146,7 @@ namespace ShipForm
                 if (MessageBox.Show($"Удалить парковку { listBoxParkings.SelectedItem.ToString()}?",
                     "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    logger.Info($"Удалили парковку{ listBoxParkings.SelectedItem.ToString()}");
                     //parkingCol.DelParking(textBoxNewParking.Text);
                     parkingCol.DelParking(listBoxParkings.SelectedItem.ToString());
                     ReloadLevels();
@@ -154,6 +157,7 @@ namespace ShipForm
 
         private void listBoxParkings_SelectedIndexChanged(object sender, EventArgs e)
         {
+            logger.Info($"Перешли на парковку{ listBoxParkings.SelectedItem.ToString()}");
             Draw();
         }
 
