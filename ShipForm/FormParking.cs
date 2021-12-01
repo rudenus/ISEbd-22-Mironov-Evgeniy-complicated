@@ -1,4 +1,5 @@
-﻿using NLog;
+﻿
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -74,7 +75,7 @@ namespace ShipForm
                     }
                     else
                     {
-                        logger.Warn("Машину не удалось поставить");
+                        logger.Error("Машину не удалось поставить");
                         MessageBox.Show("Машину не удалось поставить");
                     }
                     Draw();
@@ -115,11 +116,13 @@ namespace ShipForm
                 {
                     MessageBox.Show(ex.Message, "Не найдено", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Error("Парковка переполнена");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка изъятия автомобиля");
                 }
             }
         }
@@ -175,6 +178,10 @@ namespace ShipForm
                     form.SetShip(ship);
                     form.ShowDialog();
                 }
+                else
+                {
+                    logger.Fatal("В стек занесено неправильное значение");
+                }
             }
             Draw();
         }
@@ -194,6 +201,7 @@ namespace ShipForm
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка сохраниения");
                 }
             }
 
@@ -216,11 +224,13 @@ namespace ShipForm
                 {
                     MessageBox.Show(ex.Message, "Занятое место", MessageBoxButtons.OK,
                    MessageBoxIcon.Error);
+                    logger.Warn("Не найден автомобиль с заданным индексом");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка загрузки");
                 }
             }
         }
@@ -247,6 +257,7 @@ namespace ShipForm
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при загрузке",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка Загрузки");
                 }
             }
         }
@@ -266,6 +277,7 @@ namespace ShipForm
                 {
                     MessageBox.Show(ex.Message, "Неизвестная ошибка при сохранении",
                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Error("Ошибка сохраниения");
                 }
             }
         }
