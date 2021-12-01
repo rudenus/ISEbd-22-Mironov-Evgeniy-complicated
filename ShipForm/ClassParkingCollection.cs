@@ -90,9 +90,13 @@ namespace ShipForm
             {
                 File.Delete(filename);
             }
-            using (StreamWriter fs = new StreamWriter(filename))
+            if (!parkingStages.ContainsKey(parkingName))
             {
-                fs.Write($"ParkingOnly{Environment.NewLine}");
+                return false;
+            }
+                using (StreamWriter fs = new StreamWriter(filename))
+                {
+                    fs.Write($"ParkingOnly{Environment.NewLine}");
                     //Начинаем парковку
                     fs.Write($"Parking{separator}{parkingName}{Environment.NewLine}");
                     ITransport ship = null;
@@ -114,7 +118,8 @@ namespace ShipForm
                             fs.Write(ship + Environment.NewLine);
                         }
                     }
-            }
+                }
+           
             return true;
         }
         public bool LoadDataAll(string filename)
@@ -150,6 +155,7 @@ namespace ShipForm
                     {
                         //начинаем новую парковку
                         key = bufferTextFromFile.Split(separator)[1];
+
                         parkingStages.Add(key, new Parking<ShipBasic, SimplePipes>(pictureWidth, pictureHeight));
                         continue;
                     }
