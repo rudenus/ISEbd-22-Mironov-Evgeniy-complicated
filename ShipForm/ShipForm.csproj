@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractClass.cs" />
+    <Compile Include="ClassParking.cs" />
     <Compile Include="CLassStripePipes.cs" />
     <Compile Include="ClassRectanglePipes.cs" />
     <Compile Include="ClassSimplePipes.cs" />
@@ -54,6 +55,12 @@
     <Compile Include="EnumDop.cs" />
     <Compile Include="ClassShipBasic.cs" />
     <Compile Include="EnumDirection.cs" />
+    <Compile Include="FormParking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormParking.Designer.cs">
+      <DependentUpon>FormParking.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormShip.cs">
       <SubType>Form</SubType>
     </Compile>

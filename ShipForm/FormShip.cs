@@ -12,7 +12,7 @@ namespace ShipForm
 {
 	public partial class FormShip : Form
 	{
-		ShipBasic motorShip;
+		ITransport iship;
 		Direction direction;
 		public FormShip()
 		{
@@ -22,20 +22,26 @@ namespace ShipForm
 			comboBoxNumber.SelectedIndex = 2;
 			comboBoxType.SelectedIndex = 0;
 		}
+		public void SetShip(ITransport iship)
+		{
+			this.iship = iship;
+			Draw();
+
+		}
 		private void Draw()
 		{
 			Bitmap bmp = new Bitmap(pictureBoxShip.Width,pictureBoxShip.Height);
 			Graphics g = Graphics.FromImage(bmp);
-			motorShip.DrawTransport(g);
+			iship.DrawTransport(g);
 			pictureBoxShip.Image = bmp;
 		}
 		private void buttonCreate_Click(object sender, EventArgs e)
 		{
 			Random rand = new Random();
-			motorShip = new ShipChild(comboBoxNumber.SelectedIndex,Color.LightBlue, true, true,comboBoxType.SelectedIndex,comboBoxNumber.SelectedIndex);
+			iship = new ShipChild(Color.LightGray, Color.LightBlue, true, true,comboBoxType.SelectedIndex,comboBoxNumber.SelectedIndex);
 
 			//motorShip.classDop.Wheel = comboBoxNumber.SelectedIndex;
-			motorShip.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
+			iship.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
 			Draw();
 		}
         private void buttonRight_Click(object sender, EventArgs e)
@@ -44,16 +50,16 @@ namespace ShipForm
 			switch (name)
 			{
 				case "buttonUp":
-					motorShip.MoveTransport(Direction.Up);
+					iship.MoveTransport(Direction.Up);
 					break;
 				case "buttonDown":
-					motorShip.MoveTransport(Direction.Down);
+					iship.MoveTransport(Direction.Down);
 					break;
 				case "buttonLeft":
-					motorShip.MoveTransport(Direction.Left);
+					iship.MoveTransport(Direction.Left);
 					break;
 				case "buttonRight":
-					motorShip.MoveTransport(Direction.Right);
+					iship.MoveTransport(Direction.Right);
 					break;
 			}
 			Draw();
