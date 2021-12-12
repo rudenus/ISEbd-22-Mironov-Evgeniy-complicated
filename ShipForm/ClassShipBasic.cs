@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	public class ShipBasic: Vessel
+	public class ShipBasic: Vessel, IEquatable<ShipBasic>,IComparable
 	{
 		private readonly int carWidth = 170;
 		private readonly int carHeight = 195;
@@ -88,5 +88,84 @@ namespace ShipForm
 		{
 			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.ToArgb()}";
 		}
-	}
+		public bool Equals(ShipBasic other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is ShipBasic carObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(carObj);
+			}
+		}
+
+		public int CompareTo(Object obj)
+		{
+			if (obj == null)
+			{
+				return -1;
+			}
+			if (!(obj is ShipBasic carObj))
+			{
+				return -1;
+			}
+			else
+			{
+				return CompareTo(carObj);
+			}
+		}
+		public int CompareTo(ShipBasic obj)
+        {
+			if (MaxSpeed != obj.MaxSpeed)
+			{
+				return MaxSpeed.CompareTo(obj.MaxSpeed);
+			}
+			if (Weight != obj.Weight)
+			{
+				return Weight.CompareTo(obj.Weight);
+			}
+			if (MainColor != obj.MainColor)
+			{
+				return MainColor.Name.CompareTo(obj.MainColor.Name);
+			}
+			return 0;
+		}
+		private void printProp()
+        {
+			foreach(var str in this.ToString().Split(separator))
+            {
+				Console.WriteLine(str);
+            }
+        }
+    }
 }

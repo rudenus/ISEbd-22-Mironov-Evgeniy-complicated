@@ -48,6 +48,7 @@
             this.loadParkingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.buttonSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxParking)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -110,7 +111,7 @@
             this.ParkingShipButton.Location = new System.Drawing.Point(1081, 290);
             this.ParkingShipButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ParkingShipButton.Name = "ParkingShipButton";
-            this.ParkingShipButton.Size = new System.Drawing.Size(143, 92);
+            this.ParkingShipButton.Size = new System.Drawing.Size(143, 46);
             this.ParkingShipButton.TabIndex = 2;
             this.ParkingShipButton.Text = "Park the Ship";
             this.ParkingShipButton.UseVisualStyleBackColor = true;
@@ -198,28 +199,28 @@
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.saveToolStripMenuItem.Text = "Save All";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.loadToolStripMenuItem.Text = "Load All";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // saveParkingToolStripMenuItem
             // 
             this.saveParkingToolStripMenuItem.Name = "saveParkingToolStripMenuItem";
-            this.saveParkingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveParkingToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.saveParkingToolStripMenuItem.Text = "Save Parking";
             this.saveParkingToolStripMenuItem.Click += new System.EventHandler(this.saveParkingToolStripMenuItem_Click);
             // 
             // loadParkingToolStripMenuItem
             // 
             this.loadParkingToolStripMenuItem.Name = "loadParkingToolStripMenuItem";
-            this.loadParkingToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loadParkingToolStripMenuItem.Size = new System.Drawing.Size(178, 26);
             this.loadParkingToolStripMenuItem.Text = "Load Parking";
             this.loadParkingToolStripMenuItem.Click += new System.EventHandler(this.loadParkingToolStripMenuItem_Click);
             // 
@@ -227,11 +228,22 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
+            // buttonSort
+            // 
+            this.buttonSort.Location = new System.Drawing.Point(1081, 341);
+            this.buttonSort.Name = "buttonSort";
+            this.buttonSort.Size = new System.Drawing.Size(143, 47);
+            this.buttonSort.TabIndex = 11;
+            this.buttonSort.Text = "Sort";
+            this.buttonSort.UseVisualStyleBackColor = true;
+            this.buttonSort.Click += new System.EventHandler(this.buttonSort_Click);
+            // 
             // FormParking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1253, 629);
+            this.Controls.Add(this.buttonSort);
             this.Controls.Add(this.putInStackButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxNewParking);
@@ -278,5 +290,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ToolStripMenuItem saveParkingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadParkingToolStripMenuItem;
+        private System.Windows.Forms.Button buttonSort;
     }
 }

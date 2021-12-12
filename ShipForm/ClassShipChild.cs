@@ -9,15 +9,16 @@ namespace ShipForm
 {
   
 
-    class ShipChild: ShipBasic
+    class ShipChild: ShipBasic, IEquatable<ShipChild>,IComparable
     {
         private pipes dopEnum;
-        private bool cabin;
-        private bool windows;
+        public bool cabin;
+        public bool windows;
 
         public Color DopColor { private set; get; }
         public int Wheel { set => dopEnum = (pipes)value; }
         private IDop idop;
+        public string IDopName => idop.GetType().Name;
         public ShipChild(Color MainColor, Color DopCol, bool cabin,bool window,int speed, int weight, int shipState, int numPipes)
             :base(MainColor, speed, weight)
         {
@@ -104,6 +105,105 @@ namespace ShipForm
         {
             return
            $"{base.ToString()}{separator}{DopColor.ToArgb()}{separator}{cabin}{separator}{windows}{separator}{idop.GetType().Name}";
+        }
+        public bool Equals(ShipChild other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            if (GetType().Name != other.GetType().Name)
+            {
+                return false;
+            }
+            if (MaxSpeed != other.MaxSpeed)
+            {
+                return false;
+            }
+            if (Weight != other.Weight)
+            {
+                return false;
+            }
+            if (MainColor != other.MainColor)
+            {
+                return false;
+            }
+            if (DopColor != other.DopColor)
+            {
+                return false;
+            }
+            if (cabin != other.cabin)
+            {
+                return false;
+            }
+            if (windows != other.windows)
+            {
+                return false;
+            }
+            return true;
+        }
+        public override bool Equals(Object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if (!(obj is ShipChild carObj))
+            {
+                return false;
+            }
+            else
+            {
+                return Equals(carObj);
+            }
+        }
+        public int CompareTo(Object obj)
+        {
+            if (obj == null)
+            {
+                return -1;
+            }
+            if (!(obj is ShipChild carObj))
+            {
+                return -1;
+            }
+            else
+            {
+                return CompareTo(carObj);
+            }
+        }
+        public int CompareTo(ShipChild obj)
+        {
+
+            var res = base.CompareTo(obj);
+            if (res != 0)
+            {
+                return res;
+            }
+            if (DopColor != obj.DopColor)
+            {
+                return DopColor.Name.CompareTo(obj.DopColor.Name);
+            }
+            if (cabin != obj.cabin)
+            {
+                return cabin.CompareTo(obj.cabin);
+            }
+            if (windows != obj.windows)
+            {
+                return windows.CompareTo(obj.windows);
+            }
+            if (IDopName != obj.IDopName)
+            {
+                return IDopName.CompareTo(obj.IDopName);
+            }
+            return 0;
+        }
+        private void printProp()
+        {
+            foreach (var str in this.ToString().Split(separator))
+            {
+                Console.WriteLine(str);
+            }
         }
     }
 }

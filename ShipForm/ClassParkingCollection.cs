@@ -61,24 +61,19 @@ namespace ShipForm
                 {
                     //Начинаем парковку
                     fs.Write($"Parking{separator}{level.Key}{Environment.NewLine}");
-                    ITransport ship = null;
-                    for (int i = 0; (ship = level.Value.GetNext(i)) != null; i++)
+                    foreach (ITransport ship in level.Value)
                     {
-                        if (ship != null)
+                        //Записываем тип мшаины
+                        if (ship.GetType().Name == "ShipBasic")
                         {
-                            //если место не пустое
-                            //Записываем тип машины
-                            if (ship.GetType().Name == "Ship")
-                            {
-                                fs.Write($"Ship{separator}");
-                            }
-                            if (ship.GetType().Name == "ClassSteamer")
-                            {
-                                fs.Write($"ClassSteamer{separator}");
-                            }
-                            //Записываемые параметры
-                            fs.Write(ship + Environment.NewLine);
+                            fs.Write($"ShipBasic{separator}");
                         }
+                        if (ship.GetType().Name == "ShipChild")
+                        {
+                            fs.Write($"ShipChild{separator}");
+                        }
+                        //Записываемые параметры
+                        fs.Write(ship + Environment.NewLine);
                     }
                 }
             }
@@ -94,8 +89,7 @@ namespace ShipForm
                 fs.Write($"ParkingOnly{Environment.NewLine}");
                     //Начинаем парковку
                     fs.Write($"Parking{separator}{parkingName}{Environment.NewLine}");
-                    ITransport ship = null;
-                    for (int i = 0; (ship = parkingStages[parkingName].GetNext(i)) != null; i++)
+                    foreach (ITransport ship in parkingStages[parkingName])
                     {
                         if (ship != null)
                         {
@@ -155,11 +149,11 @@ namespace ShipForm
                     {
                         continue;
                     }
-                    if (bufferTextFromFile.Split(separator)[0] == "Ship")
+                    if (bufferTextFromFile.Split(separator)[0] == "ShipBasic")
                     {
                         car = new ShipBasic(bufferTextFromFile.Split(separator)[1]);
                     }
-                    else if (bufferTextFromFile.Split(separator)[0] == "ClassSteamer")
+                    else if (bufferTextFromFile.Split(separator)[0] == "ShipChild")
                     {
                         car = new ShipChild(bufferTextFromFile.Split(separator)[1]);
                     }
