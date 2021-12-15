@@ -1,18 +1,27 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	public class ShipBasic: Vessel, IEquatable<ShipBasic>,IComparable
+	public class ShipBasic: Vessel, IEquatable<ShipBasic>,IComparable, IEnumerator<PropertyInfo>, IEnumerable<PropertyInfo>
 	{
 		private readonly int carWidth = 170;
 		private readonly int carHeight = 195;
 		protected readonly char separator = ';';
-		public ShipBasic(Color mainColor,  int speed, int weight)
+		public int currentIndex = -1;
+		private PropertyInfo[] myPropertyInfo => Type.GetType("ShipBasic").GetProperties();
+
+		public PropertyInfo Current => myPropertyInfo[currentIndex];
+
+        object IEnumerator.Current => myPropertyInfo[currentIndex];
+
+        public ShipBasic(Color mainColor,  int speed, int weight)
         {
 			MaxSpeed = speed;
 			MainColor = mainColor;
@@ -162,10 +171,38 @@ namespace ShipForm
 		}
 		private void printProp()
         {
-			foreach(var str in this.ToString().Split(separator))
+			foreach(var prop in this)
             {
-				Console.WriteLine(str);
+				Console.WriteLine( prop.Name.ToString());
             }
         }
+
+        public void Dispose(){}
+
+        public bool MoveNext()
+        {
+			currentIndex++;
+			if (currentIndex >= myPropertyInfo.Length)
+			{
+				Reset();
+				return false;
+			}
+			return true;
+		}
+
+        public void Reset()
+        {
+			currentIndex = -1;
+		}
+
+        public IEnumerator<PropertyInfo> GetEnumerator()
+        {
+			return this;
+		}
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+			return this;
+		}
     }
 }

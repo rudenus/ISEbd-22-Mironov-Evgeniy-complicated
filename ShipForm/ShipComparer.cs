@@ -10,14 +10,16 @@ namespace ShipForm
     {
         public int Compare(Vessel x, Vessel y)
         {
-            if (x is ShipBasic && y is ShipBasic)
-            {
-                return ComparerShip(x as ShipBasic, y as ShipBasic);
-            }
+
             if (x is ShipChild && y is ShipChild)
             {
                 return ComparerSteamer(x as ShipChild, y as ShipChild);
             }
+            if (x is ShipBasic && y is ShipBasic)
+            {
+                return ComparerShip(x as ShipBasic, y as ShipBasic);
+            }
+           
             if (x is ShipChild && y is ShipBasic)
             {
                 return -1;

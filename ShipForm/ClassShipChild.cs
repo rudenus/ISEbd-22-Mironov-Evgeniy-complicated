@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace ShipForm
 {
   
 
-    class ShipChild: ShipBasic, IEquatable<ShipChild>,IComparable
+    class ShipChild: ShipBasic, IEquatable<ShipChild>,IComparable, IEnumerator<PropertyInfo>, IEnumerable<PropertyInfo>
     {
         private pipes dopEnum;
         public bool cabin;
@@ -137,6 +138,10 @@ namespace ShipForm
                 return false;
             }
             if (windows != other.windows)
+            {
+                return false;
+            }
+            if (IDopName != other.IDopName)
             {
                 return false;
             }
