@@ -38,7 +38,7 @@ namespace ShipForm
 		private void buttonCreate_Click(object sender, EventArgs e)
 		{
 			Random rand = new Random();
-			iship = new ShipChild(Color.LightGray, Color.LightBlue, true, true,comboBoxType.SelectedIndex,comboBoxNumber.SelectedIndex);
+			iship = new ShipChild(Color.LightGray, Color.LightBlue, true, true,comboBoxType.SelectedIndex,comboBoxNumber.SelectedIndex,6,2);
 
 			//motorShip.classDop.Wheel = comboBoxNumber.SelectedIndex;
 			iship.SetPosition(rand.Next(150), rand.Next(150), pictureBoxShip.Width, pictureBoxShip.Height);
