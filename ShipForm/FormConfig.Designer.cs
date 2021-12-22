@@ -54,9 +54,9 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelSimplePipes = new System.Windows.Forms.Label();
-            this.labelRectanglePipes = new System.Windows.Forms.Label();
             this.labelPremiumPipes = new System.Windows.Forms.Label();
+            this.labelRectanglePipes = new System.Windows.Forms.Label();
+            this.labelSimplePipes = new System.Windows.Forms.Label();
             this.groupBoxShipOrSteamer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxForCreate)).BeginInit();
             this.groupBoxParametrs.SuspendLayout();
@@ -222,7 +222,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.panel5.BackColor = System.Drawing.Color.DarkBlue;
             this.panel5.Location = new System.Drawing.Point(264, 234);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(62, 58);
@@ -249,7 +249,7 @@
             // 
             // panel10
             // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel10.BackColor = System.Drawing.Color.Orange;
             this.panel10.Location = new System.Drawing.Point(104, 234);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(62, 58);
@@ -352,18 +352,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Variants Pipes";
             // 
-            // labelSimplePipes
+            // labelPremiumPipes
             // 
-            this.labelSimplePipes.AllowDrop = true;
-            this.labelSimplePipes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelSimplePipes.Location = new System.Drawing.Point(6, 42);
-            this.labelSimplePipes.Name = "labelSimplePipes";
-            this.labelSimplePipes.Padding = new System.Windows.Forms.Padding(5);
-            this.labelSimplePipes.Size = new System.Drawing.Size(143, 32);
-            this.labelSimplePipes.TabIndex = 8;
-            this.labelSimplePipes.Text = "Simple Pipes";
-            this.labelSimplePipes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelSimplePipes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelSimplePipes_MouseDown);
+            this.labelPremiumPipes.AllowDrop = true;
+            this.labelPremiumPipes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelPremiumPipes.Location = new System.Drawing.Point(6, 141);
+            this.labelPremiumPipes.Name = "labelPremiumPipes";
+            this.labelPremiumPipes.Padding = new System.Windows.Forms.Padding(5);
+            this.labelPremiumPipes.Size = new System.Drawing.Size(143, 32);
+            this.labelPremiumPipes.TabIndex = 10;
+            this.labelPremiumPipes.Text = "Premium Pipes";
+            this.labelPremiumPipes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelPremiumPipes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelPremiumPipes_MouseDown);
             // 
             // labelRectanglePipes
             // 
@@ -378,18 +378,18 @@
             this.labelRectanglePipes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelRectanglePipes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelRectanglePipes_MouseDown);
             // 
-            // labelPremiumPipes
+            // labelSimplePipes
             // 
-            this.labelPremiumPipes.AllowDrop = true;
-            this.labelPremiumPipes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.labelPremiumPipes.Location = new System.Drawing.Point(6, 141);
-            this.labelPremiumPipes.Name = "labelPremiumPipes";
-            this.labelPremiumPipes.Padding = new System.Windows.Forms.Padding(5);
-            this.labelPremiumPipes.Size = new System.Drawing.Size(143, 32);
-            this.labelPremiumPipes.TabIndex = 10;
-            this.labelPremiumPipes.Text = "Premium Pipes";
-            this.labelPremiumPipes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelPremiumPipes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelPremiumPipes_MouseDown);
+            this.labelSimplePipes.AllowDrop = true;
+            this.labelSimplePipes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelSimplePipes.Location = new System.Drawing.Point(6, 42);
+            this.labelSimplePipes.Name = "labelSimplePipes";
+            this.labelSimplePipes.Padding = new System.Windows.Forms.Padding(5);
+            this.labelSimplePipes.Size = new System.Drawing.Size(143, 32);
+            this.labelSimplePipes.TabIndex = 8;
+            this.labelSimplePipes.Text = "Simple Pipes";
+            this.labelSimplePipes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelSimplePipes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labelSimplePipes_MouseDown);
             // 
             // FormConfig
             // 

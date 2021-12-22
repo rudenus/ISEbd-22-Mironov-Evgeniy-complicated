@@ -1,18 +1,27 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ShipForm
 {
-	public class ShipBasic: Vessel
+	public class ShipBasic: Vessel, IEquatable<ShipBasic>,IComparable, IEnumerator<PropertyInfo>, IEnumerable<PropertyInfo>
 	{
 		private readonly int carWidth = 170;
 		private readonly int carHeight = 195;
 		protected readonly char separator = ';';
-		public ShipBasic(Color mainColor,  int speed, int weight)
+		public int currentIndex = -1;
+		private PropertyInfo[] myPropertyInfo => Type.GetType("ShipBasic").GetProperties();
+
+		public PropertyInfo Current => myPropertyInfo[currentIndex];
+
+        object IEnumerator.Current => myPropertyInfo[currentIndex];
+
+        public ShipBasic(Color mainColor,  int speed, int weight)
         {
 			MaxSpeed = speed;
 			MainColor = mainColor;
@@ -88,5 +97,112 @@ namespace ShipForm
 		{
 			return $"{MaxSpeed}{separator}{Weight}{separator}{MainColor.ToArgb()}";
 		}
-	}
+		public bool Equals(ShipBasic other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			if (GetType().Name != other.GetType().Name)
+			{
+				return false;
+			}
+			if (MaxSpeed != other.MaxSpeed)
+			{
+				return false;
+			}
+			if (Weight != other.Weight)
+			{
+				return false;
+			}
+			if (MainColor != other.MainColor)
+			{
+				return false;
+			}
+			return true;
+		}
+
+		public override bool Equals(Object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			if (!(obj is ShipBasic carObj))
+			{
+				return false;
+			}
+			else
+			{
+				return Equals(carObj);
+			}
+		}
+
+		public int CompareTo(Object obj)
+		{
+			if (obj == null)
+			{
+				return -1;
+			}
+			if (!(obj is ShipBasic carObj))
+			{
+				return -1;
+			}
+			else
+			{
+				return CompareTo(carObj);
+			}
+		}
+		public int CompareTo(ShipBasic obj)
+        {
+			if (MaxSpeed != obj.MaxSpeed)
+			{
+				return MaxSpeed.CompareTo(obj.MaxSpeed);
+			}
+			if (Weight != obj.Weight)
+			{
+				return Weight.CompareTo(obj.Weight);
+			}
+			if (MainColor != obj.MainColor)
+			{
+				return MainColor.Name.CompareTo(obj.MainColor.Name);
+			}
+			return 0;
+		}
+		private void printProp()
+        {
+			foreach(var prop in this)
+            {
+				Console.WriteLine( prop.Name.ToString());
+            }
+        }
+
+        public void Dispose(){}
+
+        public bool MoveNext()
+        {
+			currentIndex++;
+			if (currentIndex >= myPropertyInfo.Length)
+			{
+				Reset();
+				return false;
+			}
+			return true;
+		}
+
+        public void Reset()
+        {
+			currentIndex = -1;
+		}
+
+        public IEnumerator<PropertyInfo> GetEnumerator()
+        {
+			return this;
+		}
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+			return this;
+		}
+    }
 }
