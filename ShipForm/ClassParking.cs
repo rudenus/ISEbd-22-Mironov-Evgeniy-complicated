@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,6 +70,7 @@ namespace ShipForm
                 _places[i].DrawTransport(g);
             }
         }
+       
         private void DrawMarking(Graphics g)
         {
             Pen pen = new Pen(Color.Black, 3);
@@ -94,6 +96,18 @@ namespace ShipForm
                 if (ind > -1 && ind < _places.Count)
                     _places[ind] = value;
             }
+        }
+        public T GetNext(int index)
+        {
+            if (index < 0 || index >= _places.Count)
+            {
+                return null;
+            }
+            return _places[index];
+        }
+        public void Clear()
+        {
+            _places.Clear();
         }
     }
 }

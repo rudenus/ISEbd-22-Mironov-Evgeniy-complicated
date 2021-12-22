@@ -13,7 +13,6 @@ namespace ShipForm
 	public partial class FormShip : Form
 	{
 		ITransport iship;
-		Direction direction;
 		public FormShip()
 		{
 			InitializeComponent();

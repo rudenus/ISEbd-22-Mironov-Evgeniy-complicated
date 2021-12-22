@@ -68,7 +68,7 @@ DragDropEffects.Copy);
                         (int)numericUpDownSpeed.Value, (int)numericUpDownWeight.Value,2,2);
                     break;
             }
-            else if (ship is ShipChild && e.Data.GetDataPresent(typeof(ShipChild))
+            else if (ship is ShipChild)
             {
                 (ship as ShipChild).SetIDop((IDop)e.Data.GetData(e.Data.GetFormats()[0]));
             }
@@ -155,9 +155,10 @@ DragDropEffects.Copy);
 
         private void labelPremiumPipes_MouseDown(object sender, MouseEventArgs e)
         {
-            IDop temp = new CLassStripePipes(2);
+            IDop temp = new ClassStripePipes(2);
             CreateSteamerLabel.DoDragDrop(temp, DragDropEffects.Move |
 DragDropEffects.Copy);
         }
+
     }
 }

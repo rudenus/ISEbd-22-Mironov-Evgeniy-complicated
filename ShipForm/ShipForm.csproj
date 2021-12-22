@@ -49,7 +49,7 @@
     <Compile Include="AbstractClass.cs" />
     <Compile Include="ClassParkingCollection.cs" />
     <Compile Include="ClassParking.cs" />
-    <Compile Include="CLassStripePipes.cs" />
+    <Compile Include="ClassStripePipes.cs" />
     <Compile Include="ClassRectanglePipes.cs" />
     <Compile Include="ClassSimplePipes.cs" />
     <Compile Include="ClassShipChild.cs" />

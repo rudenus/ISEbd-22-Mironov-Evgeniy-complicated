@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShipForm
 {
-    class SimplePipes : IDop
+    public class SimplePipes : IDop
     {
         private pipes dopEnum;
         public int Wheel { set  => dopEnum = (pipes)value; }
